@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import loginLottie from '../../assets/lotties/login.json'
 import Lottie from "lottie-react";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
 
@@ -47,6 +48,7 @@ const Login = () => {
               <button className="btn btn-neutral mt-4">Login</button>
             </fieldset>
           </form>
+          <SocialLogin/>
           </div>
         </div>
       </div>
