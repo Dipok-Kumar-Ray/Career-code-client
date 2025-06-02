@@ -34,7 +34,7 @@ const JobApply = () => {
               showCancelButton:false,
               timer: 1500
             })
-            
+
           }
         })
         .catch(error => {
@@ -43,9 +43,9 @@ const JobApply = () => {
     }
 
   return (
-    <div>
-      <h3 className="text-4xl">Apply for this Job: <Link to={`/jobs/{jobId}`}>details</Link> </h3>
-      <form onSubmit={handleApplyForSubmit}>
+    <div className="">
+      <h3 className=" text-4xl">Apply for this Job: <Link to={`/jobs/{jobId}`}>details</Link> </h3>
+      <form className="flex py-9 justify-center items-center" onSubmit={handleApplyForSubmit}>
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
           <label className="label">LinkedIn Link</label>
           <input type="url" className="input" name="linkedIn" placeholder="LinkedIn  Profile link" required/>
