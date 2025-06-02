@@ -18,9 +18,16 @@ const Navbar = () => {
   const links =
    <> 
   <li><NavLink to='/'>Home</NavLink></li>
+ {/* for applicants links. check roles as well */}
   {
     user && <>
     <li><NavLink to="/myApplications">My Applications</NavLink></li>
+    </>
+  }
+  {/* for requiter.check role as well*/}
+  {
+    user && <>
+    <li><NavLink to="/addJob">Add Job</NavLink></li>
     </>
   }
   </>
@@ -43,6 +50,7 @@ const Navbar = () => {
     <ul className="menu menu-horizontal px-1">
       <li><NavLink to='/'>Home</NavLink></li>
       <li><NavLink to='/myApplications'>My Applications</NavLink></li>
+      <li><NavLink to='/addJob'>Add Job</NavLink></li>
     </ul>
   </div>
   <div className="navbar-end">
