@@ -1,4 +1,6 @@
+import axios from "axios";
 import React from "react";
+import Swal from "sweetalert2";
 
 const AddJob = () => {
     const handleAddAJob = e => {
@@ -8,6 +10,48 @@ const AddJob = () => {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
         console.log(data);
+
+
+        //process salary range data
+        const {min, max, currency, ...newJob} = data;
+        newJob.salaryRange = {min, max, currency};
+
+        //process requirements
+        const requirementsString = newJob.requirements;
+        const requirementsDirty =  requirementsString.split(',');
+        const requirementsClean = requirementsDirty.map(req => req.trim());
+        newJob.requirements = requirementsClean;
+
+
+        //process responsibilities
+        newJob.responsibilities = newJob.responsibilities.split(',').map(req => req.trim());
+
+        newJob.status = 'active';
+
+        console.log(newJob);
+
+        //save job to the  database
+        axios.post('http://localhost:3000/jobs', newJob)
+        .then(res => {
+            if(res.data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'This New Job has been saved and published added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                }).then(() => {
+                    form.reset();
+                })
+            }
+            console.log(res);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+
+        // console.log(Object.keys(newJob).length);
+        // console.log(requirementsDirty, requirementsClean);
+        // console.log(newJob);
 
 
         
